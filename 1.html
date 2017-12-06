@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+  }
+  </style>
+</head>
+<body>
+  <script type="text/javascript">
+  var context = new (window.AudioContext || window.webkitAudioContext)();
+
+  function beep() {
+    window.osc = context.createOscillator();
+    window.osc.type = 'sine'; // this is the default - also square, sawtooth, triangle
+    window.osc.frequency.value = 240; // Hz
+    window.osc.connect(context.destination); // connect it to the destination
+    window.osc.start(); // start the oscillator
+    //osc.stop(context.currentTime + 2); // stop 2 seconds after the current time
+  }
+  function stop() {
+    window.osc.stop(); // start the oscillator
+  }
+  </script>
+<button class="button" onmousedown="beep()" onmouseup="stop()">Button</button>
+
+</body>
+</html>
