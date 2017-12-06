@@ -21,20 +21,24 @@
 <body>
   <script type="text/javascript">
   var context = new (window.AudioContext || window.webkitAudioContext)();
+  var Beep = {};
+  Beep.play = function() {
+    this.osc = context.createOscillator();
+    this.osc.type = 'sine';
+    this.osc.frequency.value = 240;
+    this.osc.connect(context.destination);
+    this.osc.start();
+  };
+  Beep.stop = function() {
+      this.osc.stop(0);
+  };
+  Beep.toggle = function() {
+    this.playing ? this.stop() : this.play();
+    this.playing = ! this.playing;
+  }
 
-  function beep() {
-    window.osc = context.createOscillator();
-    window.osc.type = 'sine'; // this is the default - also square, sawtooth, triangle
-    window.osc.frequency.value = 240; // Hz
-    window.osc.connect(context.destination); // connect it to the destination
-    window.osc.start(); // start the oscillator
-    //osc.stop(context.currentTime + 2); // stop 2 seconds after the current time
-  }
-  function stop() {
-    window.osc.stop(); // start the oscillator
-  }
   </script>
-<botton class="button" onmousedown="beep()" onmouseup="stop()"></botton>
+<botton class="button" onclick = "Beep.toggle()">Button</botton>
 
 </body>
 </html>
