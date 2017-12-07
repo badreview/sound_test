@@ -5,20 +5,22 @@
   .button {
       background-color: #4CAF50;
       color: white;
-      padding: 15px 32px;
+      padding: 50px 50px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
+      font-size: 36px;
+      margin: 100px 100px;
       cursor: pointer;
-      width: 70%;
+      width: 400px;
       float: center;
   }
   </style>
 </head>
 <body>
   <script type="text/javascript">
+
+
   var context = new (window.AudioContext || window.webkitAudioContext)();
   var Beep = {};
   Beep.play = function() {
@@ -35,28 +37,10 @@
     this.playing ? this.stop() : this.play();
     this.playing = ! this.playing;
   };
-  function touchStart( e ) {
-   var box = document.getElementById("box");
-   box.style.background = "green";
-   e.preventDefault();
-   return false;
- };
-  function touchMove( e ) {
- var targetEvent =  e.touches.item(0);
- var box = document.getElementById("box");
- box.style.background = "yellow";
- box.style.left = targetEvent.clientX + "px";
- box.style.top= targetEvent.clientY + "px";
- e.preventDefault();
- return false;
-};
+
+
   </script>
-<botton class="button" onclick = "Beep.toggle()">Buttson</botton>
-<div id="_mcePaste">
-  <div id="box" style="height:225px;width:225px;background:red;position:absolute" onclick = "Beep.toggle()"</div>
-  <div>ontouchmove="touchMove(event)"</div>
-  <div>ontouchstart="touchStart(event)"</div>
-</div>
+<botton class="button" onmousedown = "Beep.toggle()" onmouseup="Beep.toggle()">Buttson</botton>
 
 </body>
 </html>
