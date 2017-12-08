@@ -23,7 +23,7 @@
   function beep() {
     window.osc = context.createOscillator();
     window.osc.type = 'sine'; // this is the default - also square, sawtooth, triangle
-    window.osc.frequency.value = 240; // Hz
+    window.osc.frequency.value = 440; // Hz
     window.osc.connect(context.destination); // connect it to the destination
     window.osc.start(); // start the oscillator
     //osc.stop(context.currentTime + 2); // stop 2 seconds after the current time
