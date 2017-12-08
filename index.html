@@ -27,7 +27,7 @@
   Beep.play = function() {
     this.osc = context.createOscillator();
     this.osc.type = 'sine';
-    this.osc.frequency.value = 240;
+    this.osc.frequency.value = 640;
     this.osc.connect(context.destination);
     this.osc.start();
   };
